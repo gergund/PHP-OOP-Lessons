@@ -41,4 +41,7 @@ $directories->ShowTree();
 $directories->Add(array('dir 4' => array('file 41', 'file 42', 'file 43')));
 $directories->ShowTree();
 
+$directories->Add(array('dir 5' => array('file 51')));
+$directories->ShowTree();
+
 
