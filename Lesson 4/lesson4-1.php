@@ -27,7 +27,6 @@ class ArrayCollector implements Collector {
         // TODO: Implement GetData() method.
         return $this->collector;
     }
-
 }
 
 $obj = new ArrayCollector();
