@@ -32,4 +32,24 @@ for($i=65;$i<92;$i++){
     $index++;
 }
 
-print_r($map);
+#print_r($map);
+
+$input_msg = trim(fgets(STDIN));
+$msg_in = str_split($input_msg);
+
+$msg_index=0;$map_index=0;
+foreach($msg_in as $char_in){
+    foreach($map as $char_out => $value){
+        if($char_in == $char_out) {
+            #printf("MATCH: %s , REPLACE BY: %s", $char_in, $value);
+            $msg_out[$msg_index] = $value;
+        }
+        $map_index++;
+    }
+    $msg_index++;
+}
+
+foreach($msg_out as $char){
+    printf('%s ',$char);
+}
+
