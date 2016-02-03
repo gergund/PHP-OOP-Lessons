@@ -32,7 +32,7 @@ for($i=65;$i<92;$i++){
     $index++;
 }
 
-#print_r($map);
+print_r($map);
 
 $input_msg = trim(fgets(STDIN));
 $msg_in = str_split($input_msg);
