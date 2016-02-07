@@ -23,33 +23,58 @@ function getPermutations($key = '', $max = 0, $depth = 0, $row = array()) {
     }
     return($perms);
 }
-$key = 'abc';
-$alphabet = getPermutations($key, strlen($key) - 1);
 
-$index=0;
-for($i=65;$i<92;$i++){
-    $map[chr($i)] = $alphabet[$index];
-    $index++;
-}
+function getMap($key){
+    $alphabet = getPermutations($key, strlen($key) - 1);
 
-print_r($map);
-
-$input_msg = trim(fgets(STDIN));
-$msg_in = str_split($input_msg);
-
-$msg_index=0;$map_index=0;
-foreach($msg_in as $char_in){
-    foreach($map as $char_out => $value){
-        if($char_in == $char_out) {
-            #printf("MATCH: %s , REPLACE BY: %s", $char_in, $value);
-            $msg_out[$msg_index] = $value;
-        }
-        $map_index++;
+    $index=0;
+    for($i=65;$i<92;$i++){
+        $map[chr($i)] = $alphabet[$index];
+        $index++;
     }
-    $msg_index++;
+return $map;
 }
 
-foreach($msg_out as $char){
-    printf('%s ',$char);
+function decode($map,$msg_in)
+{
+    $msg_index=0;$map_index=0;
+    foreach($msg_in as $char_in){
+        foreach($map as $char_out => $value){
+            if($char_in == $char_out) {
+                $msg_out[$msg_index] = $value;
+            }
+            $map_index++;
+        }
+        $msg_index++;
+    }
+
+    return $msg_out;
 }
+
+function encode($map,$msg_in){
+    return $msg_out;
+}
+
+$key = 'abc';
+
+if( strlen($key) == 3){
+    $map = getMap($key);
+    print_r($map);
+
+    $in = str_split('ILOVEYOU');
+    $out = decode($map,$in);
+
+    foreach($out as $char){
+        echo $char." ";
+    }
+
+
+
+}else{
+    printf("Key size should be 3 unrepeteable symbols. Please check your key");
+}
+
+#$input_msg = trim(fgets(STDIN));
+#$msg_in = str_split($input_msg);
+
 
