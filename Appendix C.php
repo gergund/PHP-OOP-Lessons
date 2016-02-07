@@ -52,29 +52,47 @@ function decode($map,$msg_in)
 }
 
 function encode($map,$msg_in){
+    $msg_index=0;$map_index=0;
+    foreach($msg_in as $char_in){
+        foreach($map as $char_out => $value){
+            if($char_in == $value) {
+                $msg_out[$msg_index] = $char_out;
+            }
+            $map_index++;
+        }
+        $msg_index++;
+    }
     return $msg_out;
 }
 
-$key = 'abc';
+$key = './:';
 
 if( strlen($key) == 3){
     $map = getMap($key);
-    print_r($map);
 
-    $in = str_split('ILOVEYOU');
-    $out = decode($map,$in);
+    $plaintext = str_split('NOTHINGELSEMATTER');
 
-    foreach($out as $char){
+    echo "PLAIN TEXT: \n";
+    foreach($plaintext as $char){
         echo $char." ";
     }
 
+    $decoded = decode($map,$plaintext);
 
+    echo "\n DECODED: \n";
+    foreach($decoded as $char){
+        echo $char." ";
+    }
+
+    $encoded = encode($map,$decoded);
+
+    echo "\n ENCODED: \n";
+    foreach($encoded as $char){
+        echo $char." ";
+    }
 
 }else{
     printf("Key size should be 3 unrepeteable symbols. Please check your key");
 }
-
-#$input_msg = trim(fgets(STDIN));
-#$msg_in = str_split($input_msg);
 
 
