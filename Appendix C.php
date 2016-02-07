@@ -67,7 +67,7 @@ function encode($map,$msg_in){
 
 $key = './:';
 
-if( strlen($key) == 3){
+if( (strlen($key) == 3) and (strlen(implode("",array_unique(str_split($key)))) == 3) ){
     $map = getMap($key);
 
     $plaintext = str_split('NOTHINGELSEMATTER');
