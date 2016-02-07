@@ -94,5 +94,3 @@ if( (strlen($key) == 3) and (strlen(implode("",array_unique(str_split($key)))) =
 }else{
     printf("Key size should be 3 unrepeteable symbols. Please check your key");
 }
-
-
